@@ -13,6 +13,7 @@ storage
 !tsconfig.json
 
 # any output from the crawler
-*.json
+swagger-output.json
 .env
 pnpm-lock.yaml
+outputs
