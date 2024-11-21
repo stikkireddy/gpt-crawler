@@ -22,4 +22,3 @@ jobs:
         with:
           branch: main
           force: true
-          directory: outputs/
