@@ -103,7 +103,7 @@ export async function crawl(config: Config) {
         maxRequestsPerCrawl: config.maxPagesToCrawl,
         // Uncomment this option to see the browser window.
         // headless: false,
-        navigationTimeoutSecs: 5, // Set navigation timeout to 5 seconds
+        navigationTimeoutSecs: 15, // Set navigation timeout to 5 seconds
         maxRequestRetries: 2, // Disable retries on failed requests
         errorHandler: ({ request, error, log }) => {
           if (error instanceof Error) {
