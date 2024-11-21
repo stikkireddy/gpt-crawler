@@ -50,7 +50,7 @@ export async function waitForXPath(page: Page, xpath: string, timeout: number) {
 
 export async function crawl(config: Config) {
   configSchema.parse(config);
-
+  pageCounter = 0;
   if (process.env.NO_CRAWL !== "true") {
     // PlaywrightCrawler crawls the web using a headless
     // browser controlled by the Playwright library.
@@ -103,6 +103,15 @@ export async function crawl(config: Config) {
         maxRequestsPerCrawl: config.maxPagesToCrawl,
         // Uncomment this option to see the browser window.
         // headless: false,
+        navigationTimeoutSecs: 5, // Set navigation timeout to 5 seconds
+        maxRequestRetries: 2, // Disable retries on failed requests
+        errorHandler: ({ request, error, log }) => {
+          if (error instanceof Error) {
+            log.error(`Failed to fetch URL: ${request.url} - Error: ${error.message}`);
+          } else {
+            log.error(`Failed to fetch URL: ${request.url} - Unknown error`);
+          }
+        },
         preNavigationHooks: [
           // Abort requests for certain resource types
           async ({ request, page, log }) => {
