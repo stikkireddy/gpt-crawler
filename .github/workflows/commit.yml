@@ -1,0 +1,28 @@
+name: Generate Crawl Artifacts
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  crawl:
+    name: crawl
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          cache: npm
+          node-version: 18
+      - run: npm i
+      - run: npm start
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v4
+        with:
+          name: crawl-artifacts
+          path: outputs/
+          retention-days: 5
