@@ -9,7 +9,7 @@
     "noUnusedLocals": false,
     "skipLibCheck": true,
     "lib": ["DOM"],
-    "strict": true,
+    "strict": true
   },
   "include": ["./src/**/*", "config.ts"]
 }
