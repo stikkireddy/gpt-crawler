@@ -107,7 +107,9 @@ export async function crawl(config: Config) {
         maxRequestRetries: 2, // Disable retries on failed requests
         errorHandler: ({ request, error, log }) => {
           if (error instanceof Error) {
-            log.error(`Failed to fetch URL: ${request.url} - Error: ${error.message}`);
+            log.error(
+              `Failed to fetch URL: ${request.url} - Error: ${error.message}`,
+            );
           } else {
             log.error(`Failed to fetch URL: ${request.url} - Unknown error`);
           }
