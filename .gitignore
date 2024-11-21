@@ -16,4 +16,3 @@ storage
 swagger-output.json
 .env
 pnpm-lock.yaml
-outputs
